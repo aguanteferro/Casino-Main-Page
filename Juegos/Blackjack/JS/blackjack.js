@@ -7,6 +7,10 @@ var dineroUsuario2 = localStorage.getItem("keyApuesta");
 var dineroUsuario = parseInt(dineroUsuario2)
 var haApostado = false;
 let user = JSON.parse(localStorage.getItem('user'));
+var cardDealing= new Audio ('tablero/Dealing-cards-sound.mp3')
+var loseSound = new Audio ('tablero/game-lose.mp3');
+var winSound = new Audio ('tablero/game-win.mp3');
+var tieSound= new Audio ('tablero/bruh-sound-effect-2-37927.mp3')
 var hidden;
 var deck;
 
@@ -18,7 +22,6 @@ window.onload = function () {
     buildDeck();
     shuffleDeck();
     startGame();
-
 }
 
 function buildDeck() {
@@ -76,7 +79,7 @@ function startGame() {
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
     document.getElementById("dineros").innerText = "Dinero del jugador: " + dineroUsuario;
-
+    cardDealing.play();
 }
 
 
@@ -114,14 +117,17 @@ function stay() {
     if (yourSum > 21 && yourSum > dealerSum || yourSum < dealerSum && dealerSum <= 21 || yourSum == dealerSum && yourSum > 21) {
         document.getElementById("mensajeFin").innerHTML = "¡Has perdido!";
         updateUserPoints(-document.querySelector("#bet-input").value);
+        loseSound.play();
     }
     else if (dealerSum > 21 && yourSum < dealerSum || yourSum > dealerSum && yourSum <= 21) {
         document.getElementById("mensajeFin").innerHTML = "¡Has ganado!";
         updateUserPoints(document.querySelector("#bet-input").value)
+        winSound.play();
     }
 
     else if (yourSum == dealerSum && yourSum <= 21) {
         document.getElementById("mensajeFin").innerHTML = "¡Empate!";
+        tieSound.play();
     }
 
     document.getElementById("dealer-sum").innerText = dealerSum;
