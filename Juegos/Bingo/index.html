@@ -54,9 +54,14 @@
                         <div id="containerNumeroAleatorio" class="random_number">
                             <h3 id="numeroAleatorio"></h3>
                         </div>
+
+                        <audio id="audioBalls" src="./sonidos/bouncing-balls.mp3"></audio>
                     </button>
 
-                    <table id="tablaNumeros" class="container_grid"></table>
+                    <table id="tablaNumeros" class="container_grid">
+                        <audio id="audio-fall" src="./sonidos/falling-ball.wav"></audio>
+                        <audio id="audio-check" src="./sonidos/check.mp3"></audio>
+                    </table>
                 </div>
 
                 <div class="container_user-board-buttons">
@@ -65,7 +70,11 @@
                         <div id="carton-usuario" class="board_user"></div>
                     </div>
 
-                    <div id="mensajeContainer"></div>
+                    <div id="mensajeContainer">
+                        <audio id="audio-ganaste" src="./sonidos/win.mp3"></audio>
+                        <audio id="audio-perdiste" src="./sonidos/lose.mp3"></audio>
+                        <audio id="audio-alerta" src="./sonidos/alert.mp3"></audio>
+                    </div>
 
                     <div class="button_mod-game">
                         <button id="cantarBingo" class="button2">BINGO</button>
@@ -73,13 +82,12 @@
                         <button id="fila" class="button1">FILA</button>
                     </div>
                 </div>
-
+            
                 <script src="./JS/bingoPrueba4.js"></script>
             </div>
 
             <script src="./JS/botones.js"></script>
         </div>
-
         <div id="myBetModal" class="modal">
             <img src="Images/Background-Instrucciones.png" alt="modal-background-img">
             <span onclick="closeBet()" class="close">X</span>
